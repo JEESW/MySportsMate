@@ -1,3 +1,12 @@
+---
+name: Bug issue template
+about: Bug Issue Template
+title: ''
+labels: documentation
+assignees: JEESW
+
+---
+
 ## ❌ 버그 발생
 버그가 발생한 상황을 적어주세요.
 

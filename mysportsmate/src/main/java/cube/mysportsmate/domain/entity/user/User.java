@@ -2,8 +2,13 @@ package cube.mysportsmate.domain.entity.user;
 
 import cube.mysportsmate.domain.entity.common.BaseEntity;
 import jakarta.persistence.*;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
 public class User extends BaseEntity {
 
     @Id @GeneratedValue

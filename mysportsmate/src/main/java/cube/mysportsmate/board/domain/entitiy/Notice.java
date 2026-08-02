@@ -14,8 +14,9 @@ import lombok.NoArgsConstructor;
 public class Notice extends BaseEntity {
 
     @Id @GeneratedValue
-    private String id;
+    private Long id;
 
+    private String noticeTitle;
     private String noticeContent;
     private String regit;
     private boolean isDeleted;

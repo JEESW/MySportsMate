@@ -27,6 +27,12 @@ dependencies {
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
 	implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.9.1'
 
+	// Querydsl (Spring Boot 3.x / Jakarta)
+	implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
+	annotationProcessor 'com.querydsl:querydsl-apt:5.0.0:jakarta' // 버전을 명시적으로 지정
+	annotationProcessor 'jakarta.annotation:jakarta.annotation-api'
+	annotationProcessor 'jakarta.persistence:jakarta.persistence-api'
+
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.h2database:h2'
@@ -42,6 +48,23 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	testAnnotationProcessor 'org.projectlombok:lombok'
 }
+
+// === Querydsl QClass 생성 설정 ===
+def querydslDir = layout.buildDirectory.dir("generated/mysportsmate").get().asFile
+
+sourceSets {
+	main.java.srcDirs += [ querydslDir ]
+}
+
+tasks.withType(JavaCompile).configureEach {
+	options.generatedSourceOutputDirectory.set(file(querydslDir))
+}
+
+
+clean {
+	delete file(querydslDir)
+}
+
 
 tasks.named('test') {
 	useJUnitPlatform()

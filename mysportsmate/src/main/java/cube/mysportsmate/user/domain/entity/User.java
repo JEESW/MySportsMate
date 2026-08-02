@@ -22,7 +22,7 @@ public class User extends BaseEntity {
     private String email;
 
     @Enumerated(EnumType.STRING)
-    private String gender;
+    private Gender gender;
 
     private boolean isMerit;
     private boolean isNotification;

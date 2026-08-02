@@ -1,10 +1,7 @@
 package cube.mysportsmate.user.domain.entity;
 
 import cube.mysportsmate.common.domain.entity.BaseEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import lombok.AccessLevel;
@@ -16,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class UserAbility extends BaseEntity {
 
-    @Id
+    @Id @GeneratedValue
     private Long abilityId;
 
     private LocalDateTime testedAt;     // 측정일자
@@ -29,7 +26,7 @@ public class UserAbility extends BaseEntity {
     private Integer overallScore;       // 종합 점수
 
     @Enumerated(EnumType.STRING)
-    private String grade;
+    private UserGrade grade;
 
 
 }
